@@ -13,4 +13,18 @@ print(f"{game['guess_word']} | vies: {game['life']}")
 
 while True:
     letter = input("Entrez une lettre: ")
-    print(letter)
+    
+    if letter in game["secret_word"] and letter not in game["guess_word"]:
+        pass
+    elif letter not in game["secret_word"]:
+        pass
+    
+    print(f"{game['guess_word']} | vies: {game['life']}")
+    
+    if ["_"] not in game["guess_word"]:
+        print("Vous avez gagné!")
+        break
+    elif game["life"] < 1:
+        print("Vous avez perdu!")
+        break
+    
