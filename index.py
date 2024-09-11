@@ -5,7 +5,7 @@ words_list = words.split()
 secret_word = random.choice(words_list)
 game = {
   "secret_word": secret_word,
-  "guess_word": ["_"] * len(secret_word),
+  "guess_word": "_" * len(secret_word),
   "life": 10
 }
 
@@ -15,13 +15,18 @@ while True:
     letter = input("Entrez une lettre: ")
     
     if letter in game["secret_word"] and letter not in game["guess_word"]:
-        pass
-    elif letter not in game["secret_word"]:
+        guess_word_list = list(game["guess_word"])
+        for index, current_letter in enumerate(game["secret_word"]):
+            if current_letter == letter:
+                guess_word_list[index] = letter
+        game["guess_word"] = "".join(guess_word_list)
+        
+    elif letter not in enumerate["secret_word"]:
         game["life"] -= 1
     
     print(f"{game['guess_word']} | vies: {game['life']}")
     
-    if ["_"] not in game["guess_word"]:
+    if "_" not in game["guess_word"]:
         print("Vous avez gagné!")
         break
     elif game["life"] < 1:
