@@ -17,7 +17,7 @@ while True:
     if letter in game["secret_word"] and letter not in game["guess_word"]:
         pass
     elif letter not in game["secret_word"]:
-        pass
+        game["life"] -= 1
     
     print(f"{game['guess_word']} | vies: {game['life']}")
     
